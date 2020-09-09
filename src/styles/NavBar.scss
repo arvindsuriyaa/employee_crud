@@ -1,0 +1,44 @@
+@import "./variables";
+
+.header {
+  background-color: $primary-color !important;
+
+  .title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .link a {
+      color: white;
+      margin: 0px 15px;
+      padding: 16px;
+      text-decoration: none;
+    }
+    .link .active {
+      color: black;
+      background-color: white;
+    }
+  }
+}
+.userInfo {
+  .MuiGrid-spacing-xs-4 > .MuiGrid-item {
+    padding: 0px 16px !important;
+  }
+}
+
+.MuiToolbar-regular {
+  min-height: 50px !important;
+}
+
+// .MuiOutlinedInput-input {
+//   padding: 10.3px 14px !important;
+// }
+
+// .MuiOutlinedInput-multiline.MuiOutlinedInput-marginDense,
+// .MuiOutlinedInput-multiline,
+// .MuiInputBase-multiline {
+//   padding: 0px !important;
+// }
+// .MuiGrid-spacing-xs-4 > .MuiGrid-item {
+//   padding: 11px 16px !important;
+// }

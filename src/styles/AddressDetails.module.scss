@@ -1,0 +1,25 @@
+@import "./variables";
+
+.addressDetails {
+  padding: 0px 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    color: white;
+    margin: 0px 16px;
+    background-color: $button-color;
+  }
+  button:hover {
+    background-color: $button-color;
+  }
+}
+.pincode {
+  height: 65px;
+}
+
+.alignment {
+  padding: 0px 16px;
+}
