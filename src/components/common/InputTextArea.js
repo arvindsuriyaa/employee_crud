@@ -8,6 +8,7 @@ const InputTextField = (props) => {
         <TextField
           type={props.type}
           variant="outlined"
+          multiline
           value={props.value}
           error={props.error}
           className={props.className}

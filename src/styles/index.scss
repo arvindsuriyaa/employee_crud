@@ -1,18 +1,23 @@
 @import "~react_custom_table/src/styles/index.scss";
-.tableDeleteButton {
+.actionButtons {
   display: none;
 }
-.ReactTable .rt-tbody .rt-tr-group:hover .tableDeleteButton {
+.ReactTable .rt-tbody .rt-tr-group:hover .actionButtons {
   display: inline-block;
 }
 
-.ct-dropdown {
-  display: none;
-}
 
 .ReactTable .rt-tr-group .rt-td:last-child {
     border-right: 0px !important;
     padding: 0px !important;
     display: flex;
     align-items: center;
+}
+.ReactTable .rt-tr-group .rt-td{
+  display: flex;
+  align-items: center;
+}
+
+.ReactTable .rt-table {
+  border: 0.6px solid #dedada;
 }

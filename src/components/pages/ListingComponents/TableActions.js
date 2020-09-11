@@ -24,7 +24,7 @@ const TableActions = (props) => {
   };
 
   return (
-    <div className="tableDeleteButton">
+    <div className="actionButtons">
       <Button onClick={handleClick}>
         <MoreHorizIcon />
       </Button>

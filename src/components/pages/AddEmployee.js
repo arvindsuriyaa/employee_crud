@@ -13,14 +13,23 @@ const AddEmployee = (props) => {
   let [error, setError] = useState({});
   const employeeDetails = _.cloneDeep(employee);
 
-  useEffect(() => {
+  const setEditData = () => {
     const { reducer } = props;
     const { editIndex, userList } = reducer;
-    if (editIndex !== null) setEmployee(userList[editIndex]);
+    if (editIndex !== null) {
+      userList.forEach((user) => {
+        if (user.dob === "") user.dob = null;
+        if (user.mobileNumber === "") user.mobileNumber = null;
+        if (user.pincode === "") user.pincode = null;
+      });
+      setEmployee(userList[editIndex]);
+    }
     return () => {
       cancel();
     };
-  }, []);
+  };
+
+  useEffect(setEditData, []);
 
   const onFill = (name, value) => {
     if (typeof value === "string" && value.replace(/\s/g, "").length <= 0)
@@ -54,6 +63,7 @@ const AddEmployee = (props) => {
 
         if (field[key].length) {
           if (key === "emailId") {
+            // eslint-disable-next-line no-useless-escape
             let regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             if (!regEx.test(field[key])) {
               error[key] = "*Invalid Email. Expected format:aaa@example.com";
@@ -64,8 +74,8 @@ const AddEmployee = (props) => {
             if (field[key].length !== 10)
               error[key] = "*Invalid Mobile Number. Expected only 10 digits.";
           } else if (key === "pincode") {
-            if (field[key].length !== 7)
-              error[key] = "*Invalid Pincode. Expected 7 digits. ";
+            if (field[key].length !== 6)
+              error[key] = "*Invalid Pincode. Expected 6 digits. ";
           }
         }
       }
@@ -97,6 +107,7 @@ const AddEmployee = (props) => {
     setEmployee(initialState);
     actions.assignData("isEdit", false);
     actions.assignData("editIndex", null);
+    props.history.push("/EmployeeList");
   };
 
   const register = () => {
@@ -110,13 +121,9 @@ const AddEmployee = (props) => {
       return flag[1].length !== 0;
     });
     if (!errorFlag) {
-      if (isEdit) {
-        userList.splice(editIndex, 1, employeeDetails);
-      } else {
-        userList.push(employeeDetails);
-      }
+      if (isEdit) userList.splice(editIndex, 1, employeeDetails);
+      else userList.push(employeeDetails);
       actions.assignData("userList", userList);
-
       props.history.push("/EmployeeList");
       cancel();
     }

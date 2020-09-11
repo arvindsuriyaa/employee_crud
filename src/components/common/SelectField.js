@@ -9,7 +9,7 @@ import {
 
 const SelectField = (props) => {
   return (
-    <Grid item xs={props.xs} sm={props.sm}>
+    <Grid item xs={props.small} sm={props.medium}>
       <div className={props.padding}>
         <FormControl
           variant="outlined"

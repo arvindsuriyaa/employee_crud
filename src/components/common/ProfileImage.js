@@ -11,6 +11,20 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileImage = (props) => {
   const classes = useStyles();
+
+  const uploadImage = (event) => {
+    try {
+      if (/^image/.test(event.target.files[0].type)) {
+        props.onFill(
+          "profileImage",
+          URL.createObjectURL(event.target.files[0])
+        );
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
   return (
     <>
       <Avatar alt={props.alt} src={props.src} className={props.className} />
@@ -19,14 +33,7 @@ const ProfileImage = (props) => {
         className={classes.input}
         id="contained-button-file"
         type="file"
-        onChange={(event) => {
-          if (/^image/.test(event.target.files[0].type)) {
-            props.onFill(
-              "profileImage",
-              URL.createObjectURL(event.target.files[0])
-            );
-          }
-        }}
+        onChange={(event) => uploadImage(event)}
       />
       <label className={styles.label} htmlFor="contained-button-file">
         <ButtonField

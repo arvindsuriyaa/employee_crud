@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 import { Table } from "react_custom_table";
-import { parentColumn } from "../../constants/Table";
-import tableTypes from "../../constants/tableTypes";
+import { parentColumn } from "../../constants/columnData";
 import "../../styles/index.scss";
-import sampleData from "../../SampleData";
 import { bindDispatch } from "../../utils";
 import { createSelector } from "reselect";
 import { connect } from "react-redux";
 
 class EmployeeList extends Component {
-  // constructor(props) {
-  //   super(props);
   state = {
-    data: sampleData,
-    pageSize: 10,
+    data: [],
+    pageSize: 5,
     currentPage: 1,
     selection: [],
-    selectedTable: tableTypes[0],
     expandSelection: { parentSelection: [], childSelection: [] },
     columns: parentColumn,
     fixedColumns: [
@@ -28,7 +23,6 @@ class EmployeeList extends Component {
       "Email ID",
     ],
   };
-  // }
 
   handleEdit = (row) => {
     const { history, actions } = this.props;
@@ -45,31 +39,49 @@ class EmployeeList extends Component {
   };
 
   componentDidMount() {
-    console.log("props==========>", this.props);
     const { reducer } = this.props;
     const { userList } = reducer;
+    userList.forEach((user) => {
+      for (let key in user) {
+        if (user[key] === null) {
+          user[key] = "";
+        }
+      }
+    });
+
     this.setState({ data: userList });
   }
 
   render() {
     const { columns, fixedColumns } = this.state;
-    const data = sampleData;
     let actions = {
       handleEdit: (row) => this.handleEdit(row),
       handleDelete: (row) => this.handleDelete(row),
     };
-
-    console.log("data: ", data);
-
+    const { pageSize, currentPage, data } = this.state;
+    const offset = pageSize * (currentPage - 1);
+    const test = data.slice(offset, offset + pageSize);
     return (
-      <div className="App">
+      <div style={{padding: "30px"}}>
         <Table
           columns={columns(actions)}
           fixedColumns={fixedColumns}
-          data={this.state.data}
+          data={test}
           manual={false}
           LoadingComponent={<div>There is no data found</div>}
           tableTitle="Employee Details"
+          addNewButtonProps={{
+            onClick: () => this.props.history.push("/AddEmployee"),
+          }}
+          paginationProps={{
+            totalCount: data.length,
+            pageSize: pageSize,
+            currentPage: currentPage,
+            onPageNumberChange: (pageNumber) =>
+              this.setState({ currentPage: pageNumber }),
+            onChangePageSize: (size) =>
+              this.setState({ pageSize: size, currentPage: 1 }),
+          }}
         />
       </div>
     );

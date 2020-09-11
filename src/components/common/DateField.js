@@ -6,7 +6,7 @@ import { Grid } from "@material-ui/core";
 
 const DateField = (props) => {
   return (
-    <Grid item xs={props.xs} sm={props.sm}>
+    <Grid item xs={props.small} sm={props.medium}>
       <div className={props.padding}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker

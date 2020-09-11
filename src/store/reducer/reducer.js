@@ -1,9 +1,8 @@
 import ASSIGN_DATA from "../types/types";
 import _ from "lodash";
-import sampleData from "../../SampleData"
 
 export const initialState = {
-  userList: sampleData,
+  userList: [],
   isEdit: false,
   editIndex: null,
 };

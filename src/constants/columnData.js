@@ -1,35 +1,27 @@
 import React from "react";
 import TableActions from "../components/pages/ListingComponents/TableActions";
 import { Avatar } from "@material-ui/core";
-// import { EditIcon } from "../assets";
 
 const parentColumn = (props) => {
-  console.log("parent column props:===>", props);
   return [
     {
       id: "",
       Header: "",
-      // accessor: (d) => d.name,
       Cell: (row) => {
         return (
-          <Avatar
-            size="small"
-            src={row.original.profileImage}
-            alt={row.original.firstName}
-          />
+          <Avatar size="small" src={row.original.profileImage}>
+            {row.original.firstName.slice(0, 2).toUpperCase()}
+          </Avatar>
         );
       },
       isLocked: true,
       resizable: false,
-      width: 80,
+      width: 65,
     },
     {
       id: "name",
       Header: "Name",
       accessor: (d) => `${d.firstName} ${d.lastName}`,
-      // cell:(row)=>{
-      //   return(row.original.firstName+""+row.original.lastName)
-      // },
     },
     {
       Header: "Gender",
@@ -37,34 +29,38 @@ const parentColumn = (props) => {
       Cell: (row) => {
         return row.original.genderId === 1
           ? "Male"
-          : row.original.genderId !== null
+          : row.original.genderId === 2
           ? "Female"
-          : "";
+          : "N/A";
       },
     },
     {
       id: "dob",
       Header: "Date Of Birth",
       accessor: "dob",
-      // Cell: (d) => d.original.friend.name || "",
+      Cell: (row) => {
+        return row.original.dob === "" ? "N/A" : row.original.dob;
+      },
     },
     {
       id: "mobileNumber",
       Header: "Mobile Number",
       accessor: "mobileNumber",
-      // accessor: (d) => d.friend.age || "",
+      Cell: (row) => {
+        return row.original.mobileNumber === ""
+          ? "N/A"
+          : row.original.mobileNumber;
+      },
     },
     {
       id: "emailId",
       Header: "Email ID",
       accessor: "emailId",
-      // accessor: (d) => d.friend.age || "",
     },
     {
       id: "action",
       Header: "Actions",
       sortable: false,
-      // Cell: () => <EditIcon />,
       Cell: (row) => {
         return (
           <TableActions
@@ -74,6 +70,7 @@ const parentColumn = (props) => {
           />
         );
       },
+      width:120
     },
   ];
 };

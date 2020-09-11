@@ -8,6 +8,7 @@ const ButtonField = (props) => {
       className={props.className}
       variant={props.variant}
       component={props.component}
+      style={props.style}
     >
       {props.label}
     </Button>

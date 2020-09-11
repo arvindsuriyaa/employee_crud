@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import * as styles from "../../../styles/AddressDetails.module.scss";
 import { Grid } from "@material-ui/core";
+import InputTextArea from "../../common/InputTextArea";
 import InputTextField from "../../common/InputTextField";
 import ButtonField from "../../common/ButtonField";
 import CheckBoxField from "../../common/CheckBoxField";
@@ -36,11 +37,11 @@ const AddressDetails = (props) => {
       <Grid container spacing={0}>
         <Grid item xs={12}>
           <Grid container>
-            <InputTextField
+            <InputTextArea
               padding={styles.alignment}
               rows={6}
-              xs={12}
-              sm={6}
+              small={12}
+              medium={6}
               label="Communication Address"
               value={props.state.communicationAddress || ""}
               onChange={(event) => {
@@ -50,10 +51,10 @@ const AddressDetails = (props) => {
                 }
               }}
             />
-            <InputTextField
+            <InputTextArea
               rows={6}
-              xs={12}
-              sm={6}
+              small={12}
+              medium={6}
               label="Permanent Address"
               padding={styles.alignment}
               value={
@@ -89,7 +90,7 @@ const AddressDetails = (props) => {
               type="number"
               className={styles.pincode}
               padding={styles.alignment}
-              error={props.error.pincode}
+              error={props.error.pincode || false}
               helperText={props.error.pincode}
               value={props.state.pincode || ""}
               onChange={(event) => {
@@ -100,7 +101,7 @@ const AddressDetails = (props) => {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} justify="flex-end" alignContent="flex-end">
+        <Grid item xs={12}>
           <div className={styles.footer}>
             <ButtonField
               label={isEdit ? "Update" : "Register"}

@@ -7,10 +7,6 @@ export const genderSeed = [
     id: 2,
     label: "Female",
   },
-  {
-    id: 3,
-    label: "Others",
-  },
 ];
 
 export const organisationSeed = [
@@ -176,15 +172,15 @@ export const stateSeed = [
 
 export const initialState = {
   profileImage: "",
-  organisationId: null,
+  organisationId: "",
   firstName: "",
   lastName: "",
   genderId: null,
   dob: null,
   mobileNumber: null,
   emailId: "",
-  countryId: null,
-  stateId: null,
+  countryId: "",
+  stateId: "",
   city: "",
   communicationAddress: "",
   permanentAddress: "",
