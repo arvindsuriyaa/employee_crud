@@ -6,6 +6,8 @@ import { bindDispatch } from "../../utils";
 import { connect } from "react-redux";
 import { initialState } from "../../constants/productSeed";
 import _ from "lodash";
+import * as routePath from "../../constants/routePath"
+
 
 const AddEmployee = (props) => {
   const { reducer } = props;
@@ -107,7 +109,7 @@ const AddEmployee = (props) => {
     setEmployee(initialState);
     actions.assignData("isEdit", false);
     actions.assignData("editIndex", null);
-    props.history.push("/EmployeeList");
+    props.history.push(routePath.EMPLOYEE_LIST);
   };
 
   const register = () => {
@@ -124,7 +126,7 @@ const AddEmployee = (props) => {
       if (isEdit) userList.splice(editIndex, 1, employeeDetails);
       else userList.push(employeeDetails);
       actions.assignData("userList", userList);
-      props.history.push("/EmployeeList");
+      props.history.push(routePath.EMPLOYEE_LIST);
       cancel();
     }
   };

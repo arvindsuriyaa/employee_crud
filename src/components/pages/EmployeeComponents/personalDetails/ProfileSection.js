@@ -26,14 +26,14 @@ const ProfileSection = (props) => {
             small={12}
             medium={6}
             data={props.organisationSeed}
-            padding={styles.align}
+            padding={styles.fieldSpacing}
             value={props.state.organisationId || ""}
             onChange={(event) =>
               props.onFill("organisationId", Number(event.target.value))
             }
           />
           <InputTextField
-            padding={styles.align}
+            padding={styles.fieldSpacing}
             label="First Name*"
             small={12}
             medium={6}
@@ -43,7 +43,7 @@ const ProfileSection = (props) => {
             helperText={props.error.firstName}
           />
           <InputTextField
-            padding={styles.align}
+            padding={styles.fieldSpacing}
             label="Last Name"
             small={12}
             medium={6}

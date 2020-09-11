@@ -14,13 +14,13 @@ const UserSections = (props) => {
           <DateField
             small={12}
             medium={4}
-            padding={styles.align}
+            padding={styles.fieldSpacing}
             value={props.formatDate(props.state.dob)}
             onChange={(date) => props.handleDate(date)}
           />
           <InputTextField
             label="Mobile Number"
-            padding={styles.align}
+            padding={styles.fieldSpacing}
             small={12}
             medium={4}
             type="number"
@@ -34,7 +34,7 @@ const UserSections = (props) => {
             helperText={props.error.mobileNumber}
           />
           <InputTextField
-            padding={styles.align}
+            padding={styles.fieldSpacing}
             label="Email ID*"
             small={12}
             medium={4}
@@ -52,7 +52,7 @@ const UserSections = (props) => {
           small={12}
           medium={4}
           data={props.countrySeed}
-          padding={styles.align}
+          padding={styles.fieldSpacing}
           value={props.state.countryId || ""}
           onChange={(event) => props.onFill("countryId", event.target.value)}
         />
@@ -61,12 +61,12 @@ const UserSections = (props) => {
           small={12}
           medium={4}
           data={props.stateSeed}
-          padding={styles.align}
+          padding={styles.fieldSpacing}
           value={props.state.stateId || ""}
           onChange={(event) => props.onFill("stateId", event.target.value)}
         />
         <InputTextField
-          padding={styles.align}
+          padding={styles.fieldSpacing}
           label="City"
           small={12}
           medium={4}

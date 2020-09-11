@@ -9,7 +9,7 @@ const NavBar = () => {
     <AppBar position="static" className="header">
       <Toolbar>
         <div className="title">
-          <Typography variant="h6">License Form</Typography>
+          <Typography variant="h6">Employee Form</Typography>
           <div className="link">
             <NavLink to="/EmployeeList">Table</NavLink>
             <NavLink to="/AddEmployee">Form</NavLink>

@@ -38,7 +38,7 @@ const AddressDetails = (props) => {
         <Grid item xs={12}>
           <Grid container>
             <InputTextArea
-              padding={styles.alignment}
+              padding={styles.fieldSpacing}
               rows={6}
               small={12}
               medium={6}
@@ -56,7 +56,7 @@ const AddressDetails = (props) => {
               small={12}
               medium={6}
               label="Permanent Address"
-              padding={styles.alignment}
+              padding={styles.fieldSpacing}
               value={
                 props.state.addressType === 2
                   ? props.state.communicationAddress
@@ -69,7 +69,7 @@ const AddressDetails = (props) => {
               }}
             />
 
-            <div className={styles.alignment}>
+            <div className={styles.fieldSpacing}>
               <CheckBoxField
                 label="Permanent Address same as Communication Address"
                 value={2}
@@ -89,7 +89,7 @@ const AddressDetails = (props) => {
               label="Pincode"
               type="number"
               className={styles.pincode}
-              padding={styles.alignment}
+              padding={styles.fieldSpacing}
               error={props.error.pincode || false}
               helperText={props.error.pincode}
               value={props.state.pincode || ""}

@@ -17,7 +17,7 @@ const RadioButton = (props) => {
             checked={props.genderId === data.id}
           />
         }
-        label={<span style={{color:"grey"}}>{data.label}</span>}
+        label={<span>{data.label}</span>}
       />
     ))
   );

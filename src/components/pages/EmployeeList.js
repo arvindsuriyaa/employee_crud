@@ -5,6 +5,7 @@ import "../../styles/index.scss";
 import { bindDispatch } from "../../utils";
 import { createSelector } from "reselect";
 import { connect } from "react-redux";
+import * as routePath from "../../constants/routePath"
 
 class EmployeeList extends Component {
   state = {
@@ -28,7 +29,7 @@ class EmployeeList extends Component {
     const { history, actions } = this.props;
     actions.assignData("editIndex", row.index);
     actions.assignData("isEdit", true);
-    history.push("/AddEmployee");
+    history.push(routePath.ADD_EMPLOYEE);
   };
 
   handleDelete = (row) => {
@@ -71,7 +72,7 @@ class EmployeeList extends Component {
           LoadingComponent={<div>There is no data found</div>}
           tableTitle="Employee Details"
           addNewButtonProps={{
-            onClick: () => this.props.history.push("/AddEmployee"),
+            onClick: () => this.props.history.push(routePath.ADD_EMPLOYEE),
           }}
           paginationProps={{
             totalCount: data.length,
